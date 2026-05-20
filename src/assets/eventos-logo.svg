@@ -1,0 +1,12 @@
+<svg width="512" height="128" viewBox="0 0 512 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="12" y1="12" x2="84" y2="84" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0EA5FF"/>
+      <stop offset="1" stop-color="#2563EB"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="80" height="80" rx="22" fill="url(#g1)"/>
+  <path d="M30 30h35v10H40v12h21v10H40v12h25v10H30V30z" fill="white"/>
+  <text x="108" y="62" fill="#111827" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="-1">Eventos</text>
+  <text x="110" y="84" fill="#6B7280" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="1.2">EVENT MANAGEMENT</text>
+</svg>
