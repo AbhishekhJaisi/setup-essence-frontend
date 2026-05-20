@@ -232,16 +232,17 @@ function EventsPage() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 text-[#1d1d1f]">
-      <section className="rounded-3xl border border-black/5 bg-gradient-to-b from-white to-[#fafafa] p-6 shadow-[0_10px_35px_rgba(0,0,0,0.05)]">
+      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/82 p-6 shadow-[0_18px_48px_rgba(31,41,55,0.08)]">
+        <div className="absolute inset-y-0 right-0 w-2/5 bg-[radial-gradient(circle_at_80%_25%,rgba(236,72,153,0.22),transparent_32%),radial-gradient(circle_at_70%_82%,rgba(14,165,255,0.22),transparent_28%)]" />
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-          <div>
+          <div className="relative">
             <p className="text-xs uppercase tracking-[0.12em] text-[#0071e3] font-semibold">Events</p>
             <h1 className="mt-2 text-3xl md:text-4xl font-semibold leading-tight text-[#1d1d1f]">
               {isCreator ? "Manage your events" : "Discover events"}
             </h1>
             <p className="mt-2 text-sm text-[#6e6e73]">Browse, apply, and track activity in one place.</p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="relative flex items-center gap-2">
             <input
               type="text"
               placeholder="Search events"
@@ -250,17 +251,17 @@ function EventsPage() {
               className="h-11 w-56 rounded-lg border border-black/10 bg-white px-4 text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10"
             />
             {isCreator && (
-              <button onClick={() => setShowForm(true)} className="h-11 px-4 rounded-full bg-[#0071e3] text-white text-sm">
+              <button onClick={() => setShowForm(true)} className="h-11 px-4 rounded-xl bg-[#0071e3] text-white text-sm shadow-[0_10px_22px_rgba(0,113,227,0.18)]">
                 Create Event
               </button>
             )}
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-3 mt-6">
-          <div className="rounded-2xl bg-white border border-black/5 p-4"><p className="text-xs text-[#6e6e73]">Live Events</p><p className="text-xl font-semibold mt-1">{upcomingEvents.length}</p></div>
-          <div className="rounded-2xl bg-white border border-black/5 p-4"><p className="text-xs text-[#6e6e73]">Registered</p><p className="text-xl font-semibold mt-1">{appliedEvents.length}</p></div>
-          <div className="rounded-2xl bg-white border border-black/5 p-4"><p className="text-xs text-[#6e6e73]">Closed Events</p><p className="text-xl font-semibold mt-1">{closedEvents.length}</p></div>
+        <div className="relative grid grid-cols-3 gap-3 mt-6">
+          <div className="rounded-2xl bg-[#eef6ff] border border-[#cfe7ff] p-4"><p className="text-xs text-[#1d4ed8]">Live Events</p><p className="text-xl font-semibold mt-1">{upcomingEvents.length}</p></div>
+          <div className="rounded-2xl bg-[#f3e8ff] border border-[#e4ccff] p-4"><p className="text-xs text-[#7c3aed]">Registered</p><p className="text-xl font-semibold mt-1">{appliedEvents.length}</p></div>
+          <div className="rounded-2xl bg-[#fff4e8] border border-[#fed7aa] p-4"><p className="text-xs text-[#c2410c]">Closed Events</p><p className="text-xl font-semibold mt-1">{closedEvents.length}</p></div>
         </div>
       </section>
 
@@ -299,17 +300,18 @@ function EventsPage() {
             }
 
             return (
-              <article key={event.id} className="rounded-3xl border border-black/5 bg-white overflow-hidden shadow-sm">
+              <article key={event.id} className="rounded-3xl border border-white/70 bg-white/90 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(31,41,55,0.12)]">
                 <button className="w-full text-left" onClick={() => toggleCard(event.id)}>
-                  <div className="h-48 bg-[#eef2f7]">
+                  <div className="h-48 bg-[#eef2f7] relative">
                     <img src={`${apiUrl}/${event.fileUpload}`} alt={event.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent" />
                   </div>
                 </button>
 
                 <div className="p-4 space-y-3">
                   <div className="flex items-start justify-between gap-2">
                     <h3 className="text-lg font-semibold leading-snug">{event.title}</h3>
-                    <span className="text-xs px-2 py-1 rounded-full bg-[#f5f5f7] border border-black/5">{event.category}</span>
+                    <span className="text-xs px-2 py-1 rounded-full bg-[#eef6ff] text-[#1d4ed8] border border-[#cfe7ff]">{event.category}</span>
                   </div>
 
                   <div className="grid grid-cols-2 gap-2 text-xs text-[#6e6e73]">
@@ -386,7 +388,7 @@ function EventsPage() {
           <h2 className="text-lg font-semibold">Closed Events</h2>
           <span className="text-xs text-[#6e6e73]">{closedEvents.length} total</span>
         </div>
-        <div className="rounded-3xl border border-black/5 bg-white overflow-hidden">
+        <div className="rounded-3xl border border-white/70 bg-white/88 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)]">
           {closedEvents.length === 0 ? (
             <div className="py-12 text-center text-sm text-[#6e6e73]">No closed events.</div>
           ) : (

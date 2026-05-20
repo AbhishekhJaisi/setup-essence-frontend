@@ -57,7 +57,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5f5f7] text-[#1d1d1f] flex flex-col">
+    <div className="min-h-screen bg-[linear-gradient(135deg,#f7fbff_0%,#f7f3ff_48%,#fff8f0_100%)] text-[#1d1d1f] flex flex-col">
       <header className="px-6 py-5">
         <div className="inline-flex items-center gap-2.5">
           <img src={eventosMark} alt="Eventos" className="h-9 w-9 rounded-xl shadow-[0_8px_18px_rgba(37,99,235,0.24)]" />
