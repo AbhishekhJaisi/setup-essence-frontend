@@ -117,20 +117,20 @@ function NavBar() {
     <>
       <header className="sticky top-0 z-50 bg-white/64 backdrop-blur-xl border-b border-white/70">
         <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-8 py-2">
-          <nav className="h-12 rounded-2xl border border-white/80 bg-white/78 flex items-center gap-2 px-3 shadow-[0_10px_28px_rgba(31,41,55,0.07)]">
-            <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 pr-3">
+          <nav className="min-h-12 rounded-2xl border border-white/80 bg-white/78 flex flex-wrap items-center gap-2 px-2 py-2 shadow-[0_10px_28px_rgba(31,41,55,0.07)] sm:flex-nowrap sm:px-3 sm:py-0">
+            <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 pr-1 sm:pr-3">
               <img src={eventosMark} alt="Eventos" className="h-9 w-9 rounded-xl shadow-[0_8px_18px_rgba(124,58,237,0.18)]" />
               <span className="text-[15px] font-semibold text-[#2f2a3a]">Eventos</span>
             </button>
 
-            <div className="flex items-center gap-1">
+            <div className="order-3 flex w-full items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:order-none sm:w-auto">
               {navItems.map(({ item, path }) => {
                 const isActive = location.pathname === path;
                 return (
                   <Link
                     key={item}
                     to={path}
-                    className={`px-3.5 py-1.5 rounded-xl text-[13px] font-medium transition-colors ${
+                    className={`shrink-0 px-3.5 py-1.5 rounded-xl text-[13px] font-medium transition-colors ${
                       isActive ? "bg-[#f0e9ff] text-[#6d28d9] ring-1 ring-[#ddd0ff]" : "text-[#5f5868] hover:bg-[#f8f4ff] hover:text-[#3b3149]"
                     }`}
                   >
@@ -140,7 +140,7 @@ function NavBar() {
               })}
             </div>
 
-            <div className="ml-auto flex items-center gap-2">
+            <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
               <button
                 aria-label="Notifications"
                 onClick={() => setShowNotification(true)}
@@ -164,8 +164,9 @@ function NavBar() {
                 <span className="text-xs text-[#5f5868] max-w-[120px] truncate">{name}</span>
               </button>
 
-              <button onClick={() => setShowLogoutForm(true)} className="h-8 px-3 rounded-xl bg-[#e11d48] text-white text-xs font-medium shadow-[0_8px_18px_rgba(225,29,72,0.16)]">
-                Log out
+              <button onClick={() => setShowLogoutForm(true)} className="h-8 px-2.5 rounded-xl bg-[#e11d48] text-white text-xs font-medium shadow-[0_8px_18px_rgba(225,29,72,0.16)] sm:px-3">
+                <span className="sm:hidden">Exit</span>
+                <span className="hidden sm:inline">Log out</span>
               </button>
             </div>
           </nav>

@@ -133,11 +133,11 @@ function DashboardEventCreator() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 text-[#1d1d1f]">
-      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-[#101828] p-7 text-white shadow-[0_18px_50px_rgba(31,41,55,0.14)]">
+      <section className="relative overflow-hidden rounded-2xl border border-white/70 bg-[#101828] p-5 text-white shadow-[0_18px_50px_rgba(31,41,55,0.14)] sm:rounded-3xl sm:p-7">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_16%,rgba(14,165,255,0.34),transparent_30%),radial-gradient(circle_at_92%_82%,rgba(249,115,22,0.26),transparent_30%)]" />
         <div className="relative">
           <p className="text-xs uppercase tracking-[0.12em] text-[#7DD3FC] font-semibold">Creator Dashboard</p>
-          <h1 className="mt-2 text-3xl md:text-4xl font-semibold leading-tight">Manage events and applications</h1>
+          <h1 className="mt-2 text-2xl font-semibold leading-tight sm:text-3xl md:text-4xl">Manage events and applications</h1>
           <p className="mt-2 max-w-xl text-sm text-white/68">Review demand, spot capacity gaps, and keep your event pipeline clean from one focused view.</p>
         </div>
       </section>
@@ -155,10 +155,10 @@ function DashboardEventCreator() {
       </section>
 
       <section className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-        <div className="rounded-3xl border border-white/70 bg-white/88 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)]">
+        <div className="rounded-2xl border border-white/70 bg-white/88 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)] sm:rounded-3xl">
           <div className="px-5 py-4 border-b border-black/5"><h2 className="font-medium">Upcoming Events</h2></div>
           <div className="overflow-auto max-h-[380px]">
-            <table className="w-full text-sm">
+            <table className="w-full min-w-[620px] text-sm">
               <thead className="bg-[#eef6ff] text-[#475467] text-xs"><tr><th className="text-left px-5 py-3">Title</th><th className="text-left px-5 py-3">Date</th><th className="text-left px-5 py-3">Status</th><th className="text-left px-5 py-3"></th></tr></thead>
               <tbody className="divide-y divide-black/5">
                 {loading ? <tr><td colSpan={4} className="px-5 py-10 text-center text-[#6e6e73]">Loading events...</td></tr> : error ? <tr><td colSpan={4} className="px-5 py-10 text-center text-[#6e6e73]">{error}</td></tr> : upcomingEvents.length === 0 ? <tr><td colSpan={4} className="px-5 py-10 text-center text-[#6e6e73]">No upcoming events.</td></tr> : upcomingEvents.map((event) => (
@@ -174,10 +174,10 @@ function DashboardEventCreator() {
           </div>
         </div>
 
-        <div className="rounded-3xl border border-white/70 bg-white/88 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)]">
+        <div className="rounded-2xl border border-white/70 bg-white/88 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)] sm:rounded-3xl">
           <div className="px-5 py-4 border-b border-black/5"><h2 className="font-medium">Application Overview</h2></div>
           <div className="overflow-auto max-h-[380px]">
-            <table className="w-full text-sm">
+            <table className="w-full min-w-[620px] text-sm">
               <thead className="bg-[#fff4e8] text-[#7C2D12] text-xs"><tr><th className="text-left px-5 py-3">Title</th><th className="text-left px-5 py-3">Spots</th><th className="text-left px-5 py-3">Fill Rate</th><th className="text-left px-5 py-3"></th></tr></thead>
               <tbody className="divide-y divide-black/5">
                 {loading ? <tr><td colSpan={4} className="px-5 py-10 text-center text-[#6e6e73]">Loading...</td></tr> : eventsList.length === 0 ? <tr><td colSpan={4} className="px-5 py-10 text-center text-[#6e6e73]">No events to manage.</td></tr> : eventsList.map((event) => (

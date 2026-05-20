@@ -232,7 +232,7 @@ function EventsPage() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 text-[#1d1d1f]">
-      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/82 p-6 shadow-[0_18px_48px_rgba(31,41,55,0.08)]">
+      <section className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/82 p-4 shadow-[0_18px_48px_rgba(31,41,55,0.08)] sm:rounded-3xl sm:p-6">
         <div className="absolute inset-y-0 right-0 w-2/5 bg-[radial-gradient(circle_at_80%_25%,rgba(236,72,153,0.22),transparent_32%),radial-gradient(circle_at_70%_82%,rgba(14,165,255,0.22),transparent_28%)]" />
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div className="relative">
@@ -242,23 +242,23 @@ function EventsPage() {
             </h1>
             <p className="mt-2 text-sm text-[#6e6e73]">Browse, apply, and track activity in one place.</p>
           </div>
-          <div className="relative flex items-center gap-2">
+          <div className="relative flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
             <input
               type="text"
               placeholder="Search events"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-11 w-56 rounded-lg border border-black/10 bg-white px-4 text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10"
+              className="h-11 w-full rounded-lg border border-black/10 bg-white px-4 text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10 sm:w-56"
             />
             {isCreator && (
-              <button onClick={() => setShowForm(true)} className="h-11 px-4 rounded-xl bg-[#0071e3] text-white text-sm shadow-[0_10px_22px_rgba(0,113,227,0.18)]">
+              <button onClick={() => setShowForm(true)} className="h-11 w-full px-4 rounded-xl bg-[#0071e3] text-white text-sm shadow-[0_10px_22px_rgba(0,113,227,0.18)] sm:w-auto">
                 Create Event
               </button>
             )}
           </div>
         </div>
 
-        <div className="relative grid grid-cols-3 gap-3 mt-6">
+        <div className="relative grid grid-cols-1 gap-3 mt-5 sm:grid-cols-3 sm:mt-6">
           <div className="rounded-2xl bg-[#eef6ff] border border-[#cfe7ff] p-4"><p className="text-xs text-[#1d4ed8]">Live Events</p><p className="text-xl font-semibold mt-1">{upcomingEvents.length}</p></div>
           <div className="rounded-2xl bg-[#f3e8ff] border border-[#e4ccff] p-4"><p className="text-xs text-[#7c3aed]">Registered</p><p className="text-xl font-semibold mt-1">{appliedEvents.length}</p></div>
           <div className="rounded-2xl bg-[#fff4e8] border border-[#fed7aa] p-4"><p className="text-xs text-[#c2410c]">Closed Events</p><p className="text-xl font-semibold mt-1">{closedEvents.length}</p></div>
@@ -271,7 +271,7 @@ function EventsPage() {
           <span className="text-xs text-[#6e6e73]">{upcomingEvents.length} total</span>
         </div>
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+      <section className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {loadingEvents ? (
           <div className="col-span-full rounded-3xl border border-black/5 bg-white py-14 text-center text-[#6e6e73]">Loading events...</div>
         ) : selectedEvents.length === 0 ? (
@@ -314,7 +314,7 @@ function EventsPage() {
                     <span className="text-xs px-2 py-1 rounded-full bg-[#eef6ff] text-[#1d4ed8] border border-[#cfe7ff]">{event.category}</span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-xs text-[#6e6e73]">
+                  <div className="grid grid-cols-1 gap-2 text-xs text-[#6e6e73] sm:grid-cols-2">
                     <p>Date: {new Date(event.eventDate).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</p>
                     <p>Time: {event.eventTimeStart} - {event.eventTimeEnd}</p>
                     <p>City: {event.city}</p>
@@ -344,7 +344,7 @@ function EventsPage() {
                     {isExpanded ? "Show less" : "Show more"}
                   </button>
 
-                  <div className="flex gap-2">
+                  <div className="flex flex-col gap-2 sm:flex-row">
                     {isUser && (
                       <button
                         onClick={() => {
@@ -352,7 +352,7 @@ function EventsPage() {
                           setSelectedEventId(event.id);
                         }}
                         disabled={isApplied || !isBookingOpen || !isDeadlineOpen}
-                        className={`flex-1 h-10 rounded-full text-xs font-medium ${applyStyle} disabled:opacity-60`}
+                        className={`flex-1 h-10 rounded-xl text-xs font-medium ${applyStyle} disabled:opacity-60`}
                       >
                         {applyLabel}
                       </button>
@@ -366,11 +366,11 @@ function EventsPage() {
                             setSelectedEventId(event.id);
                             setShowEditForm(true);
                           }}
-                          className="h-10 px-3 rounded-full border border-black/10 text-xs"
+                          className="h-10 px-3 rounded-xl border border-black/10 text-xs"
                         >
                           Edit
                         </button>
-                        <button onClick={() => handleDelete(event.id)} className="h-10 px-3 rounded-full bg-[#d70015] text-white text-xs">
+                        <button onClick={() => handleDelete(event.id)} className="h-10 px-3 rounded-xl bg-[#d70015] text-white text-xs">
                           Delete
                         </button>
                       </>

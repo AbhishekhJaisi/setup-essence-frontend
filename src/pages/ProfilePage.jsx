@@ -98,12 +98,12 @@ function ProfilePage() {
 
   return (
     <div className="space-y-5 text-[#1d1d1f] max-w-7xl mx-auto">
-      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/86 p-6 sm:p-7 flex flex-col items-start gap-4 shadow-[0_18px_48px_rgba(31,41,55,0.08)] sm:flex-row sm:items-center">
+      <section className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/86 p-5 flex flex-col items-start gap-4 shadow-[0_18px_48px_rgba(31,41,55,0.08)] sm:rounded-3xl sm:p-7 sm:flex-row sm:items-center">
         <div className="absolute inset-y-0 right-0 w-2/5 bg-[radial-gradient(circle_at_70%_24%,rgba(99,102,241,0.24),transparent_32%),radial-gradient(circle_at_88%_78%,rgba(16,185,129,0.20),transparent_30%)]" />
         <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] border border-white/60 flex items-center justify-center text-xl font-semibold text-white shadow-[0_14px_28px_rgba(37,99,235,0.24)]">{initials}</div>
         <div className="relative flex-1">
           <p className="text-xs uppercase tracking-[0.12em] text-[#0071e3] font-semibold">Profile</p>
-          <h1 className="mt-1 text-3xl font-semibold leading-tight text-[#1d1d1f]">{userData.username || "User"}</h1>
+          <h1 className="mt-1 text-2xl font-semibold leading-tight text-[#1d1d1f] sm:text-3xl">{userData.username || "User"}</h1>
           <p className="text-sm text-[#6e6e73]">{userData.email || "-"}</p>
           <span className="inline-flex items-center gap-1.5 mt-2 px-2.5 py-1 rounded-full border border-black/10 bg-[#f5f5f7] text-xs text-[#424245]">
             {userData.role === "creator" ? (
@@ -118,7 +118,7 @@ function ProfilePage() {
             {userData.role === "creator" ? "Creator" : "User"}
           </span>
         </div>
-        <button onClick={() => setShowEditForm(true)} className="relative h-10 px-4 rounded-xl bg-[#7c3aed] text-white text-sm shadow-[0_10px_22px_rgba(124,58,237,0.18)]">Edit Profile</button>
+        <button onClick={() => setShowEditForm(true)} className="relative h-10 w-full px-4 rounded-xl bg-[#7c3aed] text-white text-sm shadow-[0_10px_22px_rgba(124,58,237,0.18)] sm:w-auto">Edit Profile</button>
       </section>
 
       <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -130,12 +130,12 @@ function ProfilePage() {
         ))}
       </section>
 
-      <section className="rounded-3xl border border-[#ffd6d6] bg-[#fff5f5] p-5 flex items-center justify-between">
+      <section className="rounded-2xl border border-[#ffd6d6] bg-[#fff5f5] p-5 flex flex-col items-start gap-3 sm:rounded-3xl sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="font-medium text-[#b71c1c]">Delete Account</h2>
           <p className="text-sm text-[#a34d4d]">Permanently delete your account and all data.</p>
         </div>
-        <button onClick={() => setShowAccDelForm(true)} className="h-10 px-4 rounded-full bg-[#d70015] text-white text-sm">Delete</button>
+        <button onClick={() => setShowAccDelForm(true)} className="h-10 w-full px-4 rounded-xl bg-[#d70015] text-white text-sm sm:w-auto">Delete</button>
       </section>
 
       <EditProfileModal

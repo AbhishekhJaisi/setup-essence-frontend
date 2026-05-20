@@ -7,7 +7,7 @@ function Layout() {
     <div className="min-h-screen bg-[linear-gradient(135deg,#f7fbff_0%,#f7f3ff_44%,#fff8f0_100%)]">
       <NavBar />
       <StickyEventBanner compact />
-      <main className="px-3 pb-8 pt-5 sm:px-5 sm:pt-6 lg:px-8">
+      <main className="px-3 pb-8 pt-4 sm:px-5 sm:pt-6 lg:px-8">
         <Outlet />
       </main>
     </div>

@@ -107,11 +107,11 @@ function DashboardUser() {
 
   return (
     <div className="max-w-7xl mx-auto space-y-6 text-[#1d1d1f]">
-      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/78 p-7 shadow-[0_18px_50px_rgba(31,41,55,0.08)]">
+      <section className="relative overflow-hidden rounded-2xl border border-white/70 bg-white/78 p-5 shadow-[0_18px_50px_rgba(31,41,55,0.08)] sm:rounded-3xl sm:p-7">
         <div className="absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_70%_20%,rgba(14,165,255,0.24),transparent_32%),radial-gradient(circle_at_88%_76%,rgba(255,184,107,0.22),transparent_30%)]" />
         <div className="relative">
           <p className="text-xs uppercase tracking-[0.12em] text-[#0071e3] font-semibold">Dashboard</p>
-          <h1 className="mt-2 text-3xl md:text-4xl font-semibold leading-tight text-[#1d1d1f]">Your activity</h1>
+          <h1 className="mt-2 text-2xl font-semibold leading-tight text-[#1d1d1f] sm:text-3xl md:text-4xl">Your activity</h1>
           <p className="mt-2 max-w-xl text-sm text-[#667085]">A quick view of events you can join, applications you have sent, and registrations that are already moving.</p>
         </div>
       </section>
@@ -136,7 +136,7 @@ function DashboardUser() {
       </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="rounded-3xl border border-white/70 bg-white/86 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)]">
+        <div className="rounded-2xl border border-white/70 bg-white/86 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)] sm:rounded-3xl">
           <div className="px-5 py-4 border-b border-black/5 flex justify-between">
             <h2 className="font-medium">Upcoming Events</h2>
             <span className="rounded-full bg-[#eaf4ff] px-2.5 py-1 text-xs text-[#1d4ed8]">{totalEvents} active</span>
@@ -181,12 +181,12 @@ function DashboardUser() {
           )}
         </div>
 
-        <div className="rounded-3xl border border-white/70 bg-white/86 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)]">
+        <div className="rounded-2xl border border-white/70 bg-white/86 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)] sm:rounded-3xl">
           <div className="px-5 py-4 border-b border-black/5">
             <h2 className="font-medium">Your Activity</h2>
           </div>
           <div className="overflow-auto max-h-[360px]">
-            <table className="w-full text-sm">
+            <table className="w-full min-w-[480px] text-sm">
               <thead className="bg-[#eef6ff] text-[#475467] text-xs">
                 <tr>
                   <th className="text-left px-5 py-3">Event</th>

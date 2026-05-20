@@ -4,7 +4,6 @@ import "./ChatBot.css";
 let msgId = 0;
 
 function ChatBot() {
-
     const [messages, setMessages] = useState([
         { id: msgId++, role: "bot", text: "Hey! I'm EventBot. Ask me about events, registration, or anything else!" }
     ]);
@@ -43,11 +42,10 @@ function ChatBot() {
             });
 
             const data = await res.json();
-            setMessages(prev => [...prev, { id: msgId++, role: "bot", text: data.reply }])
-
+            setMessages(prev => [...prev, { id: msgId++, role: "bot", text: data.reply }]);
         }
         catch (err) {
-            setMessages(prev => [...prev, { id: msgId++, role: "bot", text: "Something went wrong, try again!" }])
+            setMessages(prev => [...prev, { id: msgId++, role: "bot", text: "Something went wrong, try again!" }]);
         } finally {
             setLoading(false);
         }
@@ -55,19 +53,17 @@ function ChatBot() {
 
     return (
         <>
-            {/* Floating bubble */}
             {!isOpen && (
                 <button className="chat-bubble" onClick={() => setIsOpen(true)}>
-                    💬
+                    Chat
                 </button>
             )}
 
-            {/* Chat panel */}
             {isOpen && (
                 <div className="chat-panel">
                     <div className="chat-header">
                         <span>EventBot AI</span>
-                        <button onClick={() => setIsOpen(false)}>✕</button>
+                        <button onClick={() => setIsOpen(false)}>x</button>
                     </div>
 
                     <div className="chat-messages">
@@ -84,7 +80,7 @@ function ChatBot() {
                             value={input}
                             onChange={e => setInput(e.target.value)}
                             onKeyDown={e => e.key === "Enter" && handleSend()}
-                            placeholder="Ask about events…"
+                            placeholder="Ask about events..."
                         />
                         <button onClick={handleSend}>Send</button>
                     </div>
