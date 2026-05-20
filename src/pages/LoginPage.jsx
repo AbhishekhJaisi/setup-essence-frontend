@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import eventosMark from "../assets/eventos-mark.svg";
+import StickyEventBanner from "../components/StickyEventBanner";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -66,6 +67,7 @@ function LoginPage() {
           </div>
         </div>
       </header>
+      <StickyEventBanner />
 
       <main className="flex-1 flex items-center justify-center px-4 py-10">
         <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
