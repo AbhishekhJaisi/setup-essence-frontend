@@ -45,13 +45,13 @@ function EditEvent({ event, handleEventEdit, showEditForm, setShowEditForm }) {
   }
 
   const inputClass = (field) =>
-    `w-full h-11 px-4 rounded-2xl border ${editerrors[field] ? "border-[#d70015] bg-[#fff5f5]" : "border-black/10"} bg-white text-sm outline-none focus:border-[#0071e3]`;
+    `w-full h-11 px-4 rounded-lg border ${editerrors[field] ? "border-[#d70015] bg-[#fff5f5]" : "border-black/10"} bg-white text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10`;
 
   return (
     <div className="fixed inset-0 bg-black/35 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="w-full max-w-lg rounded-3xl border border-black/10 bg-white shadow-2xl overflow-hidden">
+      <div className="w-full max-w-lg rounded-2xl border border-black/10 bg-white shadow-2xl overflow-hidden">
         <div className="px-6 py-4 border-b border-black/10 flex items-center justify-between">
-          <h2 className="text-2xl font-semibold">Edit event</h2>
+          <h2 className="text-2xl font-semibold leading-tight text-[#1d1d1f]">Edit event</h2>
           <button onClick={() => setShowEditForm(false)} className="w-9 h-9 rounded-full border border-black/10">x</button>
         </div>
 

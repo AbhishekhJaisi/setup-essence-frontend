@@ -32,12 +32,12 @@ function ApplicationForm({ HandleEventApplication, showApplyForm, setShowApplyFo
   }
 
   const inputClass = (field) =>
-    `w-full h-11 px-4 rounded-2xl border ${applyerrors[field] ? "border-[#d70015] bg-[#fff5f5]" : "border-black/10"} bg-white text-sm outline-none focus:border-[#0071e3]`;
+    `w-full h-11 px-4 rounded-lg border ${applyerrors[field] ? "border-[#d70015] bg-[#fff5f5]" : "border-black/10"} bg-white text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10`;
 
   return (
     <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="w-full max-w-md rounded-3xl border border-black/10 bg-white shadow-2xl p-6">
-        <h2 className="text-2xl font-semibold">Apply for event</h2>
+      <div className="w-full max-w-md rounded-2xl border border-black/10 bg-white shadow-2xl p-6">
+        <h2 className="text-2xl font-semibold leading-tight text-[#1d1d1f]">Apply for event</h2>
         <p className="text-sm text-[#6e6e73] mt-1 mb-4">Fill your registration details.</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">

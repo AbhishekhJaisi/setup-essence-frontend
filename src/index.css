@@ -38,3 +38,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+::placeholder {
+  color: #8a8a91;
+}
+
+input,
+select,
+textarea {
+  border-radius: 0.75rem;
+}

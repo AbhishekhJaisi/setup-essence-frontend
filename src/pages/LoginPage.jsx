@@ -59,7 +59,7 @@ function LoginPage() {
     <div className="min-h-screen bg-[#f5f5f7] text-[#1d1d1f] flex flex-col">
       <header className="px-6 py-5">
         <div className="inline-flex items-center gap-2.5">
-          <img src={eventosMark} alt="Eventos" className="h-8 w-8 rounded-lg" />
+          <img src={eventosMark} alt="Eventos" className="h-9 w-9 rounded-xl shadow-[0_8px_18px_rgba(37,99,235,0.24)]" />
           <div className="leading-tight">
             <p className="text-[18px] font-semibold text-[#1d1d1f]">Eventos</p>
             <p className="text-[10px] tracking-[0.1em] uppercase text-[#6e6e73]">Event Management</p>
@@ -70,11 +70,11 @@ function LoginPage() {
       <main className="flex-1 flex items-center justify-center px-4 py-10">
         <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
           <section>
-            <p className="text-xs tracking-[0.12em] uppercase text-[#6e6e73] mb-3">Welcome</p>
-            <h1 className="text-5xl sm:text-6xl font-semibold leading-[1.05] tracking-[-0.03em] text-[#1d1d1f]">
-              Sign in to
+            <p className="text-xs tracking-[0.14em] uppercase text-[#0071e3] font-semibold mb-3">Welcome back</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.04] text-[#1d1d1f]">
+              Run every event
               <br />
-              continue your
+              from one sharp
               <br />
               workspace.
             </h1>
@@ -83,7 +83,7 @@ function LoginPage() {
             </p>
           </section>
 
-          <section className="rounded-3xl border border-black/5 bg-white/85 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 sm:p-8">
+          <section className="rounded-2xl border border-black/5 bg-white/90 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 sm:p-8">
             <form onSubmit={HandleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs text-[#6e6e73] mb-2">Email</label>
@@ -92,7 +92,7 @@ function LoginPage() {
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full h-12 px-4 rounded-2xl border border-black/10 bg-white text-sm outline-none focus:border-[#0071e3]"
+                  className="w-full h-12 px-4 rounded-lg border border-black/10 bg-white text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10"
                 />
               </div>
 
@@ -103,7 +103,7 @@ function LoginPage() {
                   placeholder="Enter password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full h-12 px-4 rounded-2xl border border-black/10 bg-white text-sm outline-none focus:border-[#0071e3]"
+                  className="w-full h-12 px-4 rounded-lg border border-black/10 bg-white text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10"
                 />
               </div>
 
@@ -130,7 +130,7 @@ function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-12 rounded-full bg-[#0071e3] text-white text-sm font-medium hover:bg-[#0077ed] disabled:opacity-60"
+                className="w-full h-12 rounded-xl bg-[#0071e3] text-white text-sm font-medium shadow-[0_10px_20px_rgba(0,113,227,0.18)] hover:bg-[#0077ed] disabled:opacity-60"
               >
                 {loading ? "Signing in..." : "Sign in"}
               </button>

@@ -108,8 +108,8 @@ function DashboardUser() {
   return (
     <div className="max-w-7xl mx-auto space-y-6 text-[#1d1d1f]">
       <section className="rounded-3xl border border-black/5 bg-white p-6">
-        <p className="text-xs uppercase tracking-[0.12em] text-[#6e6e73]">Dashboard</p>
-        <h1 className="mt-2 text-3xl md:text-4xl font-semibold tracking-[-0.015em]">Your activity</h1>
+        <p className="text-xs uppercase tracking-[0.12em] text-[#0071e3] font-semibold">Dashboard</p>
+        <h1 className="mt-2 text-3xl md:text-4xl font-semibold leading-tight text-[#1d1d1f]">Your activity</h1>
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">

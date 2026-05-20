@@ -129,8 +129,8 @@ function DashboardEventCreator() {
   return (
     <div className="max-w-7xl mx-auto space-y-6 text-[#1d1d1f]">
       <section className="rounded-3xl border border-black/5 bg-gradient-to-b from-white to-[#fafafa] p-7 shadow-[0_10px_35px_rgba(0,0,0,0.05)]">
-        <p className="text-xs uppercase tracking-[0.12em] text-[#6e6e73]">Creator Dashboard</p>
-        <h1 className="mt-2 text-3xl md:text-4xl font-semibold tracking-[-0.015em]">Manage events and applications</h1>
+        <p className="text-xs uppercase tracking-[0.12em] text-[#0071e3] font-semibold">Creator Dashboard</p>
+        <h1 className="mt-2 text-3xl md:text-4xl font-semibold leading-tight text-[#1d1d1f]">Manage events and applications</h1>
       </section>
 
       <section className="grid grid-cols-1 sm:grid-cols-3 gap-4">

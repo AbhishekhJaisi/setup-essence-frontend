@@ -42,18 +42,18 @@ function EditProfileModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm px-4">
-      <div className="w-full max-w-md rounded-3xl border border-black/10 bg-white shadow-2xl p-6">
-        <h2 className="text-2xl font-semibold">Edit profile</h2>
+      <div className="w-full max-w-md rounded-2xl border border-black/10 bg-white shadow-2xl p-6">
+        <h2 className="text-2xl font-semibold leading-tight text-[#1d1d1f]">Edit profile</h2>
         <p className="text-sm text-[#6e6e73] mt-1 mb-4">Update your details.</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-xs text-[#6e6e73] mb-2">Phone Number</label>
-            <input type="number" name="phone_number" onChange={handleChange} value={editProfileFormData.phone_number} className="w-full h-11 px-4 rounded-2xl border border-black/10 text-sm outline-none focus:border-[#0071e3]" />
+            <input type="number" name="phone_number" onChange={handleChange} value={editProfileFormData.phone_number} className="w-full h-11 px-4 rounded-lg border border-black/10 text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10" />
           </div>
           <div>
             <label className="block text-xs text-[#6e6e73] mb-2">Country</label>
-            <input type="text" name="country" onChange={handleChange} value={editProfileFormData.country} className="w-full h-11 px-4 rounded-2xl border border-black/10 text-sm outline-none focus:border-[#0071e3]" />
+            <input type="text" name="country" onChange={handleChange} value={editProfileFormData.country} className="w-full h-11 px-4 rounded-lg border border-black/10 text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10" />
           </div>
           {formError && <p className="text-sm text-[#d70015]">{formError}</p>}
           <div className="flex gap-2 pt-1">

@@ -119,7 +119,7 @@ function NavBar() {
         <div className="max-w-7xl mx-auto px-3 sm:px-5 lg:px-8 py-2">
           <nav className="h-12 rounded-xl bg-white flex items-center gap-2 px-3 shadow-[0_6px_20px_rgba(0,0,0,0.05)]">
             <button onClick={() => navigate("/dashboard")} className="flex items-center gap-2 pr-3">
-              <img src={eventosMark} alt="Eventos" className="h-8 w-8 rounded-lg" />
+              <img src={eventosMark} alt="Eventos" className="h-9 w-9 rounded-xl shadow-[0_8px_18px_rgba(37,99,235,0.22)]" />
               <span className="text-[15px] font-semibold text-[#1d1d1f]">Eventos</span>
             </button>
 

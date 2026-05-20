@@ -1,12 +1,22 @@
 <svg width="512" height="128" viewBox="0 0 512 128" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="g1" x1="12" y1="12" x2="84" y2="84" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0EA5FF"/>
-      <stop offset="1" stop-color="#2563EB"/>
+    <linearGradient id="eventosTileWide" x1="12" y1="12" x2="96" y2="96" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00B8FF"/>
+      <stop offset="0.52" stop-color="#2563EB"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="eventosAccentWide" x1="35" y1="34" x2="74" y2="74" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE6A8"/>
+      <stop offset="1" stop-color="#FF8A3D"/>
     </linearGradient>
   </defs>
-  <rect x="8" y="8" width="80" height="80" rx="22" fill="url(#g1)"/>
-  <path d="M30 30h35v10H40v12h21v10H40v12h25v10H30V30z" fill="white"/>
-  <text x="108" y="62" fill="#111827" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="-1">Eventos</text>
-  <text x="110" y="84" fill="#6B7280" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="500" letter-spacing="1.2">EVENT MANAGEMENT</text>
+  <rect x="8" y="8" width="88" height="88" rx="24" fill="url(#eventosTileWide)"/>
+  <path d="M31 34.5C31 29.81 34.81 26 39.5 26h25C69.19 26 73 29.81 73 34.5v31C73 70.19 69.19 74 64.5 74h-25C34.81 74 31 70.19 31 65.5v-31z" fill="white" fill-opacity="0.96"/>
+  <path d="M41 22v13M63 22v13" stroke="#163A8A" stroke-linecap="round" stroke-width="6"/>
+  <path d="M31 43h42" stroke="#DCE8FF" stroke-width="5"/>
+  <circle cx="44" cy="54" r="5" fill="url(#eventosAccentWide)"/>
+  <path d="M55 54h10M40 65h25" stroke="#2563EB" stroke-linecap="round" stroke-width="5"/>
+  <path d="M78 26l4.1 7.4 7.4 4.1-7.4 4.1L78 49l-4.1-7.4-7.4-4.1 7.4-4.1L78 26z" fill="#FFB86B"/>
+  <text x="116" y="61" fill="#111827" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="48" font-weight="750">Eventos</text>
+  <text x="118" y="84" fill="#667085" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="600">EVENT MANAGEMENT</text>
 </svg>

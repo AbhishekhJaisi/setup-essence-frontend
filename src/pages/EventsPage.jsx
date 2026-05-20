@@ -235,8 +235,8 @@ function EventsPage() {
       <section className="rounded-3xl border border-black/5 bg-gradient-to-b from-white to-[#fafafa] p-6 shadow-[0_10px_35px_rgba(0,0,0,0.05)]">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.12em] text-[#6e6e73]">Events</p>
-            <h1 className="mt-2 text-3xl md:text-4xl font-semibold tracking-[-0.015em]">
+            <p className="text-xs uppercase tracking-[0.12em] text-[#0071e3] font-semibold">Events</p>
+            <h1 className="mt-2 text-3xl md:text-4xl font-semibold leading-tight text-[#1d1d1f]">
               {isCreator ? "Manage your events" : "Discover events"}
             </h1>
             <p className="mt-2 text-sm text-[#6e6e73]">Browse, apply, and track activity in one place.</p>
@@ -247,7 +247,7 @@ function EventsPage() {
               placeholder="Search events"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="h-11 w-56 rounded-full border border-black/10 bg-white px-4 text-sm outline-none focus:border-[#0071e3]"
+              className="h-11 w-56 rounded-lg border border-black/10 bg-white px-4 text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10"
             />
             {isCreator && (
               <button onClick={() => setShowForm(true)} className="h-11 px-4 rounded-full bg-[#0071e3] text-white text-sm">

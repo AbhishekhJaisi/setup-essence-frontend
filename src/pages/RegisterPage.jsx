@@ -70,9 +70,10 @@ function RegisterPage() {
 
   return (
     <div className="min-h-screen bg-[#f5f5f7] text-[#1d1d1f] flex items-center justify-center px-4 py-10">
-      <div className="w-full max-w-xl rounded-3xl border border-black/5 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 sm:p-8">
-        <h1 className="text-4xl font-semibold tracking-[-0.02em]">Create account</h1>
-        <p className="text-sm text-[#6e6e73] mt-2 mb-6">Join your team workspace.</p>
+      <div className="w-full max-w-xl rounded-2xl border border-black/5 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.08)] p-6 sm:p-8">
+        <p className="text-xs tracking-[0.14em] uppercase text-[#0071e3] font-semibold mb-2">Get started</p>
+        <h1 className="text-3xl sm:text-4xl font-semibold leading-tight text-[#1d1d1f]">Create your account</h1>
+        <p className="text-sm text-[#6e6e73] mt-2 mb-6">Join your event workspace and start managing registrations.</p>
 
         <div className="space-y-4">
           {fields.map(({ label, type, placeholder, key }) => (
@@ -83,7 +84,7 @@ function RegisterPage() {
                 placeholder={placeholder}
                 value={formData[key]}
                 onChange={(e) => setFormData({ ...formData, [key]: e.target.value })}
-                className="w-full h-12 px-4 rounded-2xl border border-black/10 bg-white text-sm outline-none focus:border-[#0071e3]"
+                className="w-full h-12 px-4 rounded-lg border border-black/10 bg-white text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10"
               />
             </div>
           ))}
@@ -95,7 +96,7 @@ function RegisterPage() {
               placeholder="Repeat your password"
               value={cnfmpassword}
               onChange={(e) => setCnfmPassword(e.target.value)}
-              className="w-full h-12 px-4 rounded-2xl border border-black/10 bg-white text-sm outline-none focus:border-[#0071e3]"
+              className="w-full h-12 px-4 rounded-lg border border-black/10 bg-white text-sm outline-none transition focus:border-[#0071e3] focus:ring-4 focus:ring-[#0071e3]/10"
             />
           </div>
 
@@ -107,7 +108,7 @@ function RegisterPage() {
                 return (
                   <label
                     key={value}
-                    className={`h-11 rounded-2xl border text-sm flex items-center justify-center cursor-pointer ${
+                    className={`h-11 rounded-lg border text-sm flex items-center justify-center cursor-pointer transition ${
                       active ? "border-[#0071e3] bg-[#0071e3]/10 text-[#0071e3]" : "border-black/10 text-[#424245]"
                     }`}
                   >
@@ -133,7 +134,7 @@ function RegisterPage() {
             type="submit"
             disabled={loading}
             onClick={HandleSubmit}
-            className="w-full h-12 rounded-full bg-[#0071e3] text-white text-sm font-medium hover:bg-[#0077ed] disabled:opacity-60"
+            className="w-full h-12 rounded-xl bg-[#0071e3] text-white text-sm font-medium shadow-[0_10px_20px_rgba(0,113,227,0.18)] hover:bg-[#0077ed] disabled:opacity-60"
           >
             {loading ? "Signing up..." : "Sign up"}
           </button>

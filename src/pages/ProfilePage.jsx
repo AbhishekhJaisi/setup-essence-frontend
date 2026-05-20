@@ -101,8 +101,8 @@ function ProfilePage() {
       <section className="rounded-3xl border border-black/5 bg-white p-6 flex items-center gap-4">
         <div className="w-16 h-16 rounded-2xl bg-[#f2f7ff] border border-[#d9e9ff] flex items-center justify-center text-xl font-semibold text-[#0071e3]">{initials}</div>
         <div className="flex-1">
-          <p className="text-xs uppercase tracking-[0.12em] text-[#6e6e73]">Profile</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-[-0.02em]">{userData.username || "User"}</h1>
+          <p className="text-xs uppercase tracking-[0.12em] text-[#0071e3] font-semibold">Profile</p>
+          <h1 className="mt-1 text-3xl font-semibold leading-tight text-[#1d1d1f]">{userData.username || "User"}</h1>
           <p className="text-sm text-[#6e6e73]">{userData.email || "-"}</p>
           <span className="inline-flex items-center gap-1.5 mt-2 px-2.5 py-1 rounded-full border border-black/10 bg-[#f5f5f7] text-xs text-[#424245]">
             {userData.role === "creator" ? (
