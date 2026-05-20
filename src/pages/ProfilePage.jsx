@@ -97,8 +97,8 @@ function ProfilePage() {
   ];
 
   return (
-    <div className="space-y-6 text-[#1d1d1f] max-w-4xl mx-auto">
-      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/86 p-6 flex items-center gap-4 shadow-[0_18px_48px_rgba(31,41,55,0.08)]">
+    <div className="space-y-5 text-[#1d1d1f] max-w-7xl mx-auto">
+      <section className="relative overflow-hidden rounded-3xl border border-white/70 bg-white/86 p-6 sm:p-7 flex flex-col items-start gap-4 shadow-[0_18px_48px_rgba(31,41,55,0.08)] sm:flex-row sm:items-center">
         <div className="absolute inset-y-0 right-0 w-2/5 bg-[radial-gradient(circle_at_70%_24%,rgba(99,102,241,0.24),transparent_32%),radial-gradient(circle_at_88%_78%,rgba(16,185,129,0.20),transparent_30%)]" />
         <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] border border-white/60 flex items-center justify-center text-xl font-semibold text-white shadow-[0_14px_28px_rgba(37,99,235,0.24)]">{initials}</div>
         <div className="relative flex-1">
@@ -118,12 +118,12 @@ function ProfilePage() {
             {userData.role === "creator" ? "Creator" : "User"}
           </span>
         </div>
-        <button onClick={() => setShowEditForm(true)} className="relative h-10 px-4 rounded-xl bg-[#0071e3] text-white text-sm shadow-[0_10px_22px_rgba(0,113,227,0.18)]">Edit Profile</button>
+        <button onClick={() => setShowEditForm(true)} className="relative h-10 px-4 rounded-xl bg-[#7c3aed] text-white text-sm shadow-[0_10px_22px_rgba(124,58,237,0.18)]">Edit Profile</button>
       </section>
 
-      <section className="rounded-3xl border border-white/70 bg-white/88 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.06)]">
-        {fields.map(({ label, value }, i) => (
-          <div key={label} className={`px-5 py-4 hover:bg-[#f8fbff] ${i < fields.length - 1 ? "border-b border-black/5" : ""}`}>
+      <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {fields.map(({ label, value }) => (
+          <div key={label} className="rounded-2xl border border-white/70 bg-white/88 px-5 py-4 shadow-[0_12px_28px_rgba(31,41,55,0.05)]">
             <p className="text-xs text-[#6e6e73]">{label}</p>
             <p className="mt-1 text-sm">{value || "Not set"}</p>
           </div>
