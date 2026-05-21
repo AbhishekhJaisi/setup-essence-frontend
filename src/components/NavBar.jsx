@@ -5,11 +5,14 @@ import { socket } from "../socket";
 import LogOut from "./LogOut";
 import eventosMark from "../assets/eventos-mark.svg";
 
+const CART_KEY = "eventCart";
+
 function NavBar() {
   const [showNotification, setShowNotification] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [showlogoutform, setShowLogoutForm] = useState(false);
   const [unreadcount, setUnreadCount] = useState(0);
+  const [cartCount, setCartCount] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -40,7 +43,7 @@ function NavBar() {
       });
       const data = await res.json();
       setUnreadCount(data.unreadCount);
-    } catch (err) {
+    } catch {
       console.error("Failed to update notification");
     }
   };
@@ -55,7 +58,7 @@ function NavBar() {
       });
       const data = await res.json();
       setUnreadCount(data.unreadCount);
-    } catch (err) {
+    } catch {
       console.error("Failed to mark all as read");
     }
   };
@@ -107,6 +110,25 @@ function NavBar() {
     notifCount();
   }, []);
 
+  useEffect(() => {
+    function syncCartCount() {
+      try {
+        const cartItems = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+        setCartCount(Array.isArray(cartItems) ? cartItems.length : 0);
+      } catch {
+        setCartCount(0);
+      }
+    }
+
+    syncCartCount();
+    window.addEventListener("storage", syncCartCount);
+    window.addEventListener("event-cart-updated", syncCartCount);
+    return () => {
+      window.removeEventListener("storage", syncCartCount);
+      window.removeEventListener("event-cart-updated", syncCartCount);
+    };
+  }, []);
+
   const navItems = [
     { item: "Dashboard", path: "/dashboard" },
     { item: "Events", path: "/events" },
@@ -141,6 +163,24 @@ function NavBar() {
             </div>
 
             <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+              <button
+                aria-label="Cart"
+                onClick={() => navigate("/cart")}
+                className={`relative w-8 h-8 rounded-xl border text-[#5f5868] hover:bg-[#f8f4ff] ${
+                  location.pathname === "/cart" ? "border-[#ddd0ff] bg-[#f0e9ff] text-[#6d28d9]" : "border-[#ece7f5] bg-white/76"
+                }`}
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-4 h-4 mx-auto">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 5.25h2.1l1.7 9.35a2 2 0 0 0 1.96 1.65h6.99a2 2 0 0 0 1.93-1.47l1.03-4.03H7.05" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.25 20.25h.01M17.25 20.25h.01" />
+                </svg>
+                {cartCount > 0 && (
+                  <span className="absolute -top-1 -right-1 min-w-[16px] h-4 rounded-full bg-[#0071e3] text-white text-[9px] flex items-center justify-center px-1">
+                    {cartCount}
+                  </span>
+                )}
+              </button>
+
               <button
                 aria-label="Notifications"
                 onClick={() => setShowNotification(true)}

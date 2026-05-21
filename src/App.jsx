@@ -16,6 +16,7 @@ import Dashboard from "./pages/Dashboard";
 import Bookings from "./pages/Bookings";
 import Payments from "./pages/Payments";
 import ChatBot from "./components/chatbot/ChatBot";
+import CartPage from "./pages/CartPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/bookings" element={<Bookings />} />
         </Route>

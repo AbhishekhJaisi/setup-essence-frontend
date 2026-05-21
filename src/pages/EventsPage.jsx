@@ -4,6 +4,29 @@ import ApplicationForm from "../components/ApplicationForm";
 import EditEvent from "../components/EditEvent";
 import ApplicantsList from "../components/ApplicantList";
 
+const CART_KEY = "eventCart";
+const WISHLIST_KEY = "eventWishlist";
+
+function readStoredEvents(key) {
+  try {
+    const items = JSON.parse(localStorage.getItem(key) || "[]");
+    return Array.isArray(items) ? items : [];
+  } catch {
+    return [];
+  }
+}
+
+function storeEventItem(key, eventItem) {
+  const items = readStoredEvents(key);
+  if (items.some((item) => item.id === eventItem.id)) {
+    return items;
+  }
+  const nextItems = [...items, eventItem];
+  localStorage.setItem(key, JSON.stringify(nextItems));
+  window.dispatchEvent(new Event("event-cart-updated"));
+  return nextItems;
+}
+
 function EventsPage() {
   const [eventsList, setEventsList] = useState([]);
   const [appliedEvents, setAppliedEvents] = useState([]);
@@ -17,15 +40,38 @@ function EventsPage() {
   const [showApplicants, setShowApplicants] = useState(false);
   const [loadingEvents, setLoadingEvents] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [cartItems, setCartItems] = useState(() => readStoredEvents(CART_KEY));
+  const [wishlistItems, setWishlistItems] = useState(() => readStoredEvents(WISHLIST_KEY));
 
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-  const itemsPerPage = 6;
   const apiUrl = import.meta.env.VITE_API_URL;
   const isCreator = role === "creator";
   const isUser = role === "user";
 
   const toggleCard = (id) => setExpandedId((prev) => (prev === id ? null : id));
+
+  function createSavedEvent(event) {
+    return {
+      id: event.id,
+      title: event.title,
+      category: event.category,
+      city: event.city,
+      eventDate: event.eventDate,
+      eventTimeStart: event.eventTimeStart,
+      eventTimeEnd: event.eventTimeEnd,
+      priceAmount: event.priceAmount,
+      imageUrl: event.fileUpload ? `${apiUrl}/${event.fileUpload}` : "",
+    };
+  }
+
+  function handleAddToCart(event) {
+    setCartItems(storeEventItem(CART_KEY, createSavedEvent(event)));
+  }
+
+  function handleAddToWishlist(event) {
+    setWishlistItems(storeEventItem(WISHLIST_KEY, createSavedEvent(event)));
+  }
 
   function parseEventDateLocal(value) {
     if (!value) return null;
@@ -285,6 +331,8 @@ function EventsPage() {
             const bookingStartDate = event.bookingOpenDate;
             const isOwner = event.userId?.toString() === userId;
             const isExpanded = expandedId === event.id;
+            const isInCart = cartItems.some((item) => item.id === event.id);
+            const isWishlisted = wishlistItems.some((item) => item.id === event.id);
 
             let applyLabel = "Apply Now";
             let applyStyle = "bg-[#0071e3] text-white";
@@ -346,16 +394,36 @@ function EventsPage() {
 
                   <div className="flex flex-col gap-2 sm:flex-row">
                     {isUser && (
-                      <button
-                        onClick={() => {
-                          setShowApplyForm(true);
-                          setSelectedEventId(event.id);
-                        }}
-                        disabled={isApplied || !isBookingOpen || !isDeadlineOpen}
-                        className={`flex-1 h-10 rounded-xl text-xs font-medium ${applyStyle} disabled:opacity-60`}
-                      >
-                        {applyLabel}
-                      </button>
+                      <>
+                        <button
+                          onClick={() => {
+                            setShowApplyForm(true);
+                            setSelectedEventId(event.id);
+                          }}
+                          disabled={isApplied || !isBookingOpen || !isDeadlineOpen}
+                          className={`flex-1 h-10 rounded-xl text-xs font-medium ${applyStyle} disabled:opacity-60`}
+                        >
+                          {applyLabel}
+                        </button>
+                        <button
+                          onClick={() => handleAddToCart(event)}
+                          disabled={isInCart}
+                          className="h-10 rounded-xl border border-[#cfe7ff] bg-[#eef6ff] px-3 text-xs font-medium text-[#1d4ed8] disabled:opacity-60 sm:w-28"
+                        >
+                          {isInCart ? "In Cart" : "Add Cart"}
+                        </button>
+                        <button
+                          aria-label={isWishlisted ? "Wishlisted" : "Add to wishlist"}
+                          onClick={() => handleAddToWishlist(event)}
+                          disabled={isWishlisted}
+                          className="h-10 rounded-xl border border-[#f7c7dd] bg-[#fff1f6] px-3 text-xs font-medium text-[#be185d] disabled:opacity-60 sm:w-11"
+                        >
+                          <span className="sr-only">{isWishlisted ? "Wishlisted" : "Add to wishlist"}</span>
+                          <svg viewBox="0 0 24 24" fill={isWishlisted ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" className="mx-auto h-4 w-4">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.75c0 5.25-8.25 10-8.25 10s-8.25-4.75-8.25-10A4.52 4.52 0 0 1 8.25 4.25c1.55 0 2.92.78 3.75 1.98a4.48 4.48 0 0 1 3.75-1.98 4.52 4.52 0 0 1 4.5 4.5Z" />
+                          </svg>
+                        </button>
+                      </>
                     )}
 
                     {isCreator && isOwner && (
