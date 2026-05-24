@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import ApplicantsList from "../components/ApplicantList";
 import EditEvent from "../components/EditEvent";
+import apiUrl from '../config/api';
+
 
 function fmt(dateStr) {
   return new Date(dateStr).toLocaleDateString("en-IN", {
@@ -29,7 +31,6 @@ const STATUS_COLORS = {
 };
 
 function DashboardEventCreator() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const [eventsList, setEventsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -43,7 +44,7 @@ function DashboardEventCreator() {
 
   const handleUpdate = async (editformdata) => {
     try {
-      const res = await fetch(`${apiUrl}/api/events/${editingEvent.id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events/${editingEvent.id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +68,7 @@ function DashboardEventCreator() {
 
   async function fetchApplicants(eventId) {
     try {
-      const res = await fetch(`${apiUrl}/api/registrations/event/${eventId}/applicants`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/registrations/event/${eventId}/applicants`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -80,7 +81,7 @@ function DashboardEventCreator() {
 
   async function handleStatus(regId, status) {
     try {
-      await fetch(`${apiUrl}/api/registrations/${regId}/status`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/registrations/${regId}/status`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -97,7 +98,7 @@ function DashboardEventCreator() {
   useEffect(() => {
     async function fetchCreatorDetails() {
       try {
-        const res = await fetch(`${apiUrl}/api/events/my-events`, {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/events/my-events`, {
           method: "GET",
           headers: { Authorization: `Bearer ${token}` },
         });

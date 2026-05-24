@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import apiUrl from '../config/api';
+
 
 function ForgotPassword() {
   const [formData, setFormData] = useState({ email: "" });
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_API_URL;
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EditProfileModal from "../components/EditProfileModal";
 import DeleteAccModal from "../components/DeleteAccModal";
+import apiUrl from '../config/api';
+
 
 function ProfilePage() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   const [showAccDelForm, setShowAccDelForm] = useState(false);
@@ -22,7 +23,7 @@ function ProfilePage() {
         interests: userData.interests || "",
         bio: userData.bio || "",
       };
-      const res = await fetch(`${apiUrl}/api/auth/onboarding`, {
+      const res = await fetch(`${apiUrl}/auth/onboarding`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -48,7 +49,7 @@ function ProfilePage() {
   async function handleAccountDelete() {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${apiUrl}/api/auth/delete`, {
+      const res = await fetch(`${apiUrl}/auth/delete`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -64,7 +65,7 @@ function ProfilePage() {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await fetch(`${apiUrl}/api/auth/profile`, {
+        const res = await fetch(`${apiUrl}/auth/profile`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

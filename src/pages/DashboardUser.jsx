@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import ApplicationForm from "../components/ApplicationForm";
+import apiUrl from '../config/api';
+
 
 function DashboardUser() {
-  const apiUrl = import.meta.env.VITE_API_URL;
   const [totalEvents, setTotalEvents] = useState(0);
   const [eventsList, setEventsList] = useState([]);
   const [showApplyForm, setShowApplyForm] = useState(false);
@@ -28,7 +29,7 @@ function DashboardUser() {
   useEffect(() => {
     async function checkApplications() {
       try {
-        const res = await fetch(`${apiUrl}/api/registrations/my-applications`, {
+        const res = await fetch(`${apiUrl}/registrations/my-applications`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -50,7 +51,7 @@ function DashboardUser() {
   useEffect(() => {
     async function fetchEvents() {
       try {
-        const res = await fetch(`${apiUrl}/api/events/view-events`, {
+        const res = await fetch(`${apiUrl}/events/view-events`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -65,7 +66,7 @@ function DashboardUser() {
 
   async function handleEventApplication(applyFormData) {
     try {
-      const res = await fetch(`${apiUrl}/api/registrations/apply/${selectedEventId}`, {
+      const res = await fetch(`${apiUrl}/registrations/apply/${selectedEventId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

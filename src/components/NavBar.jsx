@@ -4,6 +4,8 @@ import NotificationModal from "./NotificationModal";
 import { socket } from "../socket";
 import LogOut from "./LogOut";
 import eventosMark from "../assets/eventos-mark.svg";
+import apiUrl from '../config/api';
+
 
 const CART_KEY = "eventCart";
 
@@ -15,7 +17,6 @@ function NavBar() {
   const [cartCount, setCartCount] = useState(0);
   const navigate = useNavigate();
   const location = useLocation();
-  const apiUrl = import.meta.env.VITE_API_URL;
 
   const userData = localStorage.getItem("user");
   const token = localStorage.getItem("token");
@@ -37,7 +38,7 @@ function NavBar() {
     );
     if (!alreadyRead) setUnreadCount((prev) => Math.max(prev - 1, 0));
     try {
-      const res = await fetch(`${apiUrl}/api/notifications/${id}/read`, {
+      const res = await fetch(`${apiUrl}/notifications/${id}/read`, {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -52,7 +53,7 @@ function NavBar() {
     setNotifications((prev) => prev.map((n) => ({ ...n, isRead: true })));
     setUnreadCount(0);
     try {
-      const res = await fetch(`${apiUrl}/api/notifications/mark-all-read`, {
+      const res = await fetch(`${apiUrl}/notifications/mark-all-read`, {
         method: "PATCH",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -83,7 +84,7 @@ function NavBar() {
   useEffect(() => {
     async function getNotification() {
       try {
-        const res = await fetch(`${apiUrl}/api/notifications`, {
+        const res = await fetch(`${apiUrl}/notifications`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -98,7 +99,7 @@ function NavBar() {
   useEffect(() => {
     async function notifCount() {
       try {
-        const res = await fetch(`${apiUrl}/api/notifications/unread-count`, {
+        const res = await fetch(`${apiUrl}/notifications/unread-count`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();

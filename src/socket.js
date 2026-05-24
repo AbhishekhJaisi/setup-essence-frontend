@@ -1,9 +1,11 @@
 
 import { io } from "socket.io-client";
+import apiUrl from './config/api';
 
-  const apiUrl = import.meta.env.VITE_API_URL;
 
 export const socket = io(`${apiUrl}`, {
 
-  autoConnect: false
+  autoConnect: false,
+  withCredentials: true
 });
+

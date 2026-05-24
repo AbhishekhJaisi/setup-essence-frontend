@@ -1,22 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import apiUrl from '../config/api';
+
 
 function RegisterPage() {
   const Navigate = useNavigate();
-  const apiUrl = import.meta.env.VITE_API_URL;
+  const emptyFormData = {
+    username: "",
+    email: "",
+    password: "",
+    phone_number: "",
+    role: "",
+  };
 
   const [cnfmpassword, setCnfmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [register, setRegister] = useState("");
 
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    phone_number: "",
-    role: "",
-  });
+  const [formData, setFormData] = useState(emptyFormData);
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -41,7 +43,7 @@ function RegisterPage() {
 
     setError("");
     try {
-      const res = await fetch(`${apiUrl}/api/auth/register`, {
+      const res = await fetch(`${apiUrl}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -58,7 +60,7 @@ function RegisterPage() {
     } finally {
       setLoading(false);
     }
-    setFormData("");
+    setFormData(emptyFormData);
   };
 
   const fields = [

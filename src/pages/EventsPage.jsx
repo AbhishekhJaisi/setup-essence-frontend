@@ -3,6 +3,8 @@ import CreateEventForm from "../components/CreateEventForm";
 import ApplicationForm from "../components/ApplicationForm";
 import EditEvent from "../components/EditEvent";
 import ApplicantsList from "../components/ApplicantList";
+import apiUrl from '../config/api';
+
 
 const CART_KEY = "eventCart";
 const WISHLIST_KEY = "eventWishlist";
@@ -45,7 +47,6 @@ function EventsPage() {
 
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
-  const apiUrl = import.meta.env.VITE_API_URL;
   const isCreator = role === "creator";
   const isUser = role === "user";
 
@@ -95,7 +96,7 @@ function EventsPage() {
 
   async function handleStatus(regId, status) {
     try {
-      await fetch(`${apiUrl}/api/registrations/${regId}/status`, {
+      await fetch(`${apiUrl}/registrations/${regId}/status`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +112,7 @@ function EventsPage() {
 
   async function handleDelete(id) {
     try {
-      const res = await fetch(`${apiUrl}/api/events/${id}`, {
+      const res = await fetch(`${apiUrl}/events/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -123,7 +124,7 @@ function EventsPage() {
 
   async function fetchApplicants(eventId) {
     try {
-      const res = await fetch(`${apiUrl}/api/registrations/event/${eventId}/applicants`, {
+      const res = await fetch(`${apiUrl}/registrations/event/${eventId}/applicants`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -137,7 +138,7 @@ function EventsPage() {
   useEffect(() => {
     async function checkApplications() {
       try {
-        const res = await fetch(`${apiUrl}/api/registrations/my-applications`, {
+        const res = await fetch(`${apiUrl}/registrations/my-applications`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await res.json();
@@ -156,7 +157,7 @@ function EventsPage() {
       if (searchQuery.trim()) params.append("title", searchQuery);
       params.append("page", 1);
       params.append("limit", 50);
-      const res = await fetch(`${apiUrl}/api/events/view-events?${params}`, {
+      const res = await fetch(`${apiUrl}/events/view-events?${params}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -187,7 +188,7 @@ function EventsPage() {
       Object.entries(formData).forEach(([key, value]) => {
         dataToSend.append(key === "image" ? "fileUpload" : key, value);
       });
-      const res = await fetch(`${apiUrl}/api/events/createEvents`, {
+      const res = await fetch(`${apiUrl}/events/createEvents`, {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: dataToSend,
@@ -204,7 +205,7 @@ function EventsPage() {
 
   async function handleEventApplication(applyFormData) {
     try {
-      const res = await fetch(`${apiUrl}/api/registrations/apply/${selectedEventId}`, {
+      const res = await fetch(`${apiUrl}/registrations/apply/${selectedEventId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -237,7 +238,7 @@ function EventsPage() {
         fullDescription: editformdata.description,
         city: editformdata.city,
       };
-      const res = await fetch(`${apiUrl}/api/events/${editingEvent.id}`, {
+      const res = await fetch(`${apiUrl}/events/${editingEvent.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -351,7 +352,7 @@ function EventsPage() {
               <article key={event.id} className="rounded-3xl border border-white/70 bg-white/90 overflow-hidden shadow-[0_12px_34px_rgba(31,41,55,0.08)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(31,41,55,0.12)]">
                 <button className="w-full text-left" onClick={() => toggleCard(event.id)}>
                   <div className="h-48 bg-[#eef2f7] relative">
-                    <img src={`${apiUrl}/${event.fileUpload}`} alt={event.title} className="w-full h-full object-cover" />
+                    <img src={`${import.meta.env.VITE_API_URL}/${event.fileUpload}`} alt={event.title} className="w-full h-full object-cover" />
                     <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/45 to-transparent" />
                   </div>
                 </button>
